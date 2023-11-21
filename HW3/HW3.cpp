@@ -11,7 +11,7 @@ void gameDuration()
     int s = static_cast<int>(timeInGame) % 60;
     std::cout << "Your tome in game: " << h << " hours, " << m << " minutes, " << s << " seconds." << std::endl;
 }
-void hw3_2()
+void arithmeticSimple()
 {
     int a = 0;
     int b = 0;
@@ -30,7 +30,7 @@ void hw3_2()
     std::cout << "Compare: c < b \n" << std::boolalpha << compare2 << std::endl;
     std::cout << "Compare: a > c \n" << std::boolalpha << compare3 << std::endl;
 }
-void hw3_3()
+void comparingValue()
 {
     int a = 0;
     int b = 0;
@@ -48,7 +48,7 @@ void hw3_3()
     std::cout << "first value less or equal second: " << std::boolalpha << lessOrEqual << std::endl;
 
 }
-void hw3_4()
+void recArea()
 {
     int a = 0;
     int b = 0;
@@ -58,15 +58,19 @@ void hw3_4()
     std::cin >> b;
     std::cout << "rectangle area = " << a * b << " m2\n" << "rectangle perimeter = " << 2 * a + 2 * b << " m " << std::endl;
 }
-void hw3_5()
+void areaAndLength()
 {
-    const double p = 3.14;
+    const double Pi = 3.14;
     int a = 0;
     std::cout << "Radius:";
     std::cin >> a;
-    std::cout << "circle area = " << (a * a) * p << " m2\n" << "circle length = " << 2 * p * a << " m ";
+    std::cout << "circle area = " << (a * a) * Pi << " m2\n" << "circle length = " << 2 * Pi * a << " m ";
 }
 int main()
 {
-    hw3_2();
+    gameDuration();
+    arithmeticSimple();
+    comparingValue();
+    recArea();
+    areaAndLength();
 }

@@ -24,9 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EnumClasses.cpp">
-      <Filter>Source Files\Homeworks\HW_2</Filter>
-    </ClCompile>
     <ClCompile Include="HW_1.cpp">
       <Filter>Source Files\Homeworks\HW_1</Filter>
     </ClCompile>
