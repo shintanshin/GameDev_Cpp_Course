@@ -156,16 +156,16 @@ void hw4_3()
     int a = 0;
     std::cout << "Enter the number: ";
     std::cin >> a;
-    if (a % 5 == 0)
+    if (a % 5 == 0 && a % 11 == 0)
     {
-        if (a % 11 == 0)
-        {
+        //if (a % 11 == 0)
+        //{
             std::cout << "Number is divisible by 5 and 11";
-        }
-        else
-        {
-            std::cout << "Number isn't divisible by 5 and 11";
-        }
+        //}
+        //else
+        //{
+            //std::cout << "Number isn't divisible by 5 and 11";
+        //}
     }
     else
     {
@@ -264,21 +264,21 @@ void hw4_6()
 }
 int main()
 {
-    hw_1();           // first homework
-    hw2_1();          // swap variables
-    hw2_2();          // double to int
-    hw2_3();          // double in notations
-    hw2_weekDays();   // enum class with sequence number
-    hw2_5();          // bool
-    hw3_1();          // time in game
-    hw3_2();          // sum, product, arithmetic average
-    hw3_3();          // 
-    hw3_4();
-    hw3_5();
-    hw4_1();
-    hw4_2();
+    //hw_1();           // first homework
+   // hw2_1();          // swap variables
+   // hw2_2();          // double to int
+    //hw2_3();          // double in notations
+    //hw2_weekDays();   // enum class with sequence number
+    //hw2_5();          // bool
+    //hw3_1();          // time in game
+    //hw3_2();          // sum, product, arithmetic average
+    //hw3_3();          // 
+    //hw3_4();
+    //hw3_5();
+    //hw4_1();
+    //hw4_2();
     hw4_3();
-    hw4_4();
-    hw4_5();
-    hw4_6();
+    //hw4_4();
+    //hw4_5();
+   // hw4_6();
 }
