@@ -107,7 +107,7 @@ void sumOfAngle()
     }
 }
 
-void mounthCount()
+void monthCount()
 {
     int month = 0;
     std::cin >> month;
@@ -158,7 +158,7 @@ void mounthCount()
     }
 }
 
-void hw4_6()
+void monthToSeason()
 {
     int a = 0;
     std::cin >> a;
@@ -178,11 +178,13 @@ void hw4_6()
         std::cout << "This month doesn't exist";
     }
 }
+
 int main()
 {
-    //biggestValue();
-    //lessNumber();
-    //divisionNum();
-    //sumOfAngle();
-    mounthCount();
+    biggestValue();
+    lessNumber();
+    divisionNum();
+    sumOfAngle();
+    monthCount();
+    monthToSeason();
 }
