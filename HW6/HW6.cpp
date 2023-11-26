@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include<iomanip>
 #include<limits> 
-
 #include <cctype>
 void arithmeticProgression() {
     int a1 = 0;
@@ -21,7 +20,7 @@ void arithmeticProgression() {
 }
 
 //Рекурсивна функція для виводу значення елемента послідовності Фібоначчі
-  int FibonacciSequence1(int n) {          
+int FibonacciSequence1(int n) {          
     int r;
     if (n == 1) { return 0; }
     else if (n == 2) { return 1; }
@@ -146,31 +145,31 @@ void geometricFigures() {
     for (int i = 0; i < t; i++) {
         for (int j = 0; j <= i; j++) {
             if (i % 2 == 0) {
-                if (j % 2 == 0) { std::cout << 1 << " "; }
-                else { std::cout << 0 << " "; }
+                (j % 2 == 0) ?  std::cout << 1 << " " : std::cout << 0 << " ";
             }
             else{
-                if (j % 2 == 0) { std::cout << 0 << " "; }
-                else { std::cout << 1 << " "; }
+                (j % 2 == 0) ? std::cout << 0 << " " : std::cout << 1 << " "; 
             }
         }
         std::cout << std::endl;
-
     }
 }
 void charManip() {
     char value = 0;
     int totalSum = 0;
-
+    int a = 96;
+    int b = 123;
+    int c = 47;
+    int d = 58;
     while (true) {
         std::cout << "Enter value: ";
         std::cin >> value;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        if (value > 96 && value < 123) {
+        if (value > a && value < b) {
             value = toupper(value);
             std::cout << value << std::endl;
         }
-        else if (value > 47 && value < 58) {
+        else if (value > c && value < d) {
             value = value - '0';
             totalSum += value;
             std::cout << totalSum << std::endl;
@@ -180,10 +179,8 @@ void charManip() {
         }
         else {
             std::cout << "This symbol isn't processed by the program!" << std::endl;
-
         }
     }
-    
 }
 int main()
 {
@@ -191,6 +188,6 @@ int main()
     //std::cout << FibonacciSequence1(getNumber()); // вивід рекурсивної функції 
     //FibonacciSequence();
     //factorial();
-    //geometricFigures();
-    charManip();
+    geometricFigures();
+    //charManip();
 }
