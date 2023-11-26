@@ -145,7 +145,7 @@ void geometricFigures() {
     for (int i = 0; i < t; i++) {
         for (int j = 0; j <= i; j++) {
             if (i % 2 == 0) {
-                (j % 2 == 0) ? std::cout << 1 << " " : std::cout << 0 << " ";
+                (j % 2 == 0) ?  std::cout << 1 << " " : std::cout << 0 << " ";
             }
             else{
                 (j % 2 == 0) ? std::cout << 0 << " " : std::cout << 1 << " "; 
@@ -184,10 +184,10 @@ void charManip() {
 }
 int main()
 {
-    arithmeticProgression();
-    std::cout << FibonacciSequence1(getNumber()); // вивід рекурсивної функції 
-    FibonacciSequence();
-    factorial();
+    //arithmeticProgression();
+    //std::cout << FibonacciSequence1(getNumber()); // вивід рекурсивної функції 
+    //FibonacciSequence();
+    //factorial();
     geometricFigures();
-    charManip();
+    //charManip();
 }
