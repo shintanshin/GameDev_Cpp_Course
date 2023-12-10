@@ -1,4 +1,4 @@
 #pragma once
 int factorialRecursion(int count);
-int printNaturalNumbersRecursionAscend(int count);
-int printNaturalNumbersRecursionDesc(int count);
+void printNaturalNumbersRecursionAscend(int count);
+void printNaturalNumbersRecursionDesc(int count);

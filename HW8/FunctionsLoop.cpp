@@ -26,9 +26,7 @@ int factorialLoop(int count) {
 	for (int i = 1; i <= count; i++) {
 		factorial *= i;
 	}
-	std::cout << "Factorial of " << count << " is " << factorial;
-	std::cout << std::endl;
-
+	return factorial;
 }
 void printNaturalNumbersLoop(int count) {
 
