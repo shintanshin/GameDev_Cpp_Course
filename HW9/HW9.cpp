@@ -2,19 +2,20 @@
 #include "Arrays.h"
 int main()
 {
-	//const int size = 10;
-	//int myArr[size];
-	
-	//translateArray( myArr, size);
+	const int size = 10;
+	int myArr[size];
+	readArray(myArr, size);
+	translateArray(myArr, size);
+	std::cout << "Translated Array: ";
+	printArray(myArr, size);
 	
 
-	//char myStr[100];
-	
-   // toUppercase(myStr);
-
+	char myStr[100];
+	inputString(myStr);
+    toUppercase(myStr);
+	std::cout << "Output: " << myStr << std::endl;
 
 	char myValue[] = "lol";
-
 	isPalindrom(myValue);
 
 
@@ -28,8 +29,8 @@ int main()
 
 
 	const char str1[] = "A-a-a-a";
-	const char str2[] = "Stay alive!";
-	const char str3[] = "Stay alive!";
+	const char str2[] = "Staying alive!";
+	const char str3[] = "Staying alive!";
 	
 	bool result = isEqual(str1, str2);
 	std::cout << std::endl;

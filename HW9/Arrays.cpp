@@ -1,30 +1,35 @@
 ﻿#include <iostream>
 
+void readArray(int numbers[], int size) {
+    std::cout << "Enter " << size << " integers:\n";
 
-void translateArray(int numbers[], int size) {
-    std::cout << "Enter " << size << " numbers: " << std::endl;
     for (int i = 0; i < size; i++) {
         std::cin >> numbers[i];
     }
+}
+void printArray(const int numbers[], int size) {
     for (int i = 0; i < size; i++) {
-        (numbers[i] > 0) ? numbers[i] *= 2 : numbers[i] = 0;
-    }
-    std::cout << "Array elements are:" << std::endl;
-    for (int i = 0; i < size; i++) {
-        std::cout << numbers[i] << " ";
+        std::cout << " " << numbers[i];
     }
     std::cout << std::endl;
 }
-
-void toUppercase(char str[]) {
-    const int a = 96;
-    const int b = 123;
-    std::cout << "Input: ";
-    std::cin >> str;
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (str[i] > a && str[i] < b) { str[i] = toupper(str[i]); }
+void translateArray(int numbers[], int size) {
+    
+    for (int i = 0; i < size; i++) {
+        (numbers[i] > 0) ? numbers[i] *= 2 : numbers[i] = 0;
     }
-    std::cout << "Output: " << str << std::endl;
+}
+
+void inputString(char str[]) {
+    std::cout << "Input: ";
+    std::cin>>str; 
+}
+void toUppercase(char str[]) {
+    const int firstSymbol = 96;
+    const int lastSymbol = 123;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] > firstSymbol && str[i] < lastSymbol) { str[i] = toupper(str[i]); }
+    }
 }
 
 bool isPalindrom(const char str[]) {
@@ -79,4 +84,5 @@ bool isEqual(const char str1[], const char str2[]) {
         std::cout << "strings are equal";
         return true;
     }
+    return false;
 }
