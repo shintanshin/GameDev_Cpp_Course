@@ -1,17 +1,18 @@
 #include <iostream>
 #include <string>
 
+const int numOfMarks = 4;
 struct Student {
     std::string name;
-    unsigned marks[4];
+    unsigned marks[numOfMarks];
 };
 
 double averageMark(const Student& student) {
     unsigned sum = 0;
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < numOfMarks; ++i) {
         sum += student.marks[i];
     }
-    return static_cast <double> (sum) / 4.0;
+    return sum / 4.0;
 }
 void bubbleSortStudents(Student students[], int numStudents) {
     for (int i = 0; i < numStudents - 1; ++i) {
@@ -25,10 +26,14 @@ void bubbleSortStudents(Student students[], int numStudents) {
 
 const Student* findMostSuccessfulStudent(const Student students[], int numStudents) {
     const Student* mostSuccessful = &students[0];
+    double mostSuccessfulMark = averageMark(*mostSuccessful);
 
     for (int i = 1; i < numStudents; ++i) {
-        if (averageMark(students[i]) > averageMark(*mostSuccessful)) {
+        double currentMark = averageMark(students[i]);
+
+        if (currentMark > mostSuccessfulMark) {
             mostSuccessful = &students[i];
+            mostSuccessfulMark = currentMark;
         }
     }
     return mostSuccessful;
@@ -49,7 +54,7 @@ int main()
     const int numStudents = 4;
 
     Student students[numStudents] = {
-       {"Jane", {100, 87, 75, 67}},
+       {"Jane", {100, 87, 95, 67}},
        {"Diana", {100, 91, 56, 48}},
        {"Roman", {46, 99, 62, 83}},
        {"Luke", {68, 64, 100, 99}}
