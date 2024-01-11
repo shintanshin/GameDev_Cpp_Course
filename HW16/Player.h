@@ -33,8 +33,6 @@ public:
     
     Player(const std::string& playerName, int playerHealth, PlayerClass playerClass) ;
 
-    ~Player();
-
     std::string getName() const;
     int getHealth() const;
     PlayerClass getPlayerClass() const;

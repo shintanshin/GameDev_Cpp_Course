@@ -9,10 +9,6 @@ Player::Player(const std::string& playerName, int playerHealth, PlayerClass play
     weapon(nullptr),
     team(nullptr){}
 
-Player::~Player() {
-    delete weapon;
-}
-
 Weapon::Weapon()
     : damage (0), range(0){}
 
