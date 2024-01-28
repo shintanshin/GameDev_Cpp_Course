@@ -1,16 +1,16 @@
 #include "Weapon.h"
 
-float SniperRifle::getPrecision(int distance) const
+float SniperRifle::getPrecision(int distance, int effectiveRange) const
 {
-	if (distance > 2000)
+	if (distance > effectiveRange)
 	{
 		return 0.2f;
 	}
-	if (distance > 1000)
+	if (distance > effectiveRange/2)
 	{
 		return 1.5f;
 	}
-	if (distance > 300)
+	if (distance > effectiveRange/4)
 	{
 		return 5.0f;
 	}
@@ -22,17 +22,17 @@ SniperRifle::SniperRifle()
 	damageLevel = 5;
 }
 
-float Pistol::getPrecision(int distance) const
+float Pistol::getPrecision(int distance, int effectiveRange) const
 {
-	if (distance > 300)
+	if (distance > effectiveRange)
 	{
 		return 0.2f;
 	}
-	if (distance > 150)
+	if (distance > effectiveRange/2)
 	{
 		return 1.5f;
 	}
-	if (distance > 10)
+	if (distance > effectiveRange/4)
 	{
 		return 5.0f;
 	}
@@ -45,17 +45,17 @@ Pistol::Pistol()
 	damageLevel = 2;
 }
 
-float AssaultRifle::getPrecision(int distance) const
+float AssaultRifle::getPrecision(int distance, int effectiveRange) const
 {
-	if (distance > 900)
+	if (distance > effectiveRange)
 	{
 		return 0.2f;
 	}
-	if (distance > 450)
+	if (distance > effectiveRange/2)
 	{
 		return 1.5f;
 	}
-	if (distance >100)
+	if (distance > effectiveRange/4)
 	{
 		return 5.0f;
 	}
@@ -68,13 +68,13 @@ AssaultRifle::AssaultRifle()
 	damageLevel = 4;
 }
 
-float BareHand::getHit(int distance) const
+float BareHand::getHit(int distance, int effectiveRange) const
 {
-	if (distance > 5)
+	if (distance > effectiveRange)
 	{
 		return 0.2f;
 	}
-	if (distance > 3)
+	if (distance > effectiveRange/2)
 	{
 		return 1.5f;
 	}
@@ -91,17 +91,17 @@ BareHand::BareHand()
 	damageLevel = 1;
 }
 
-float Axe::getHit(int distance) const
+float Axe::getHit(int distance, int effectiveRange) const
 {
-	if (distance > 20)
+	if (distance > effectiveRange)
 	{
 		return 0.2f;
 	}
-	if (distance > 10)
+	if (distance > effectiveRange/2)
 	{
 		return 1.5f;
 	}
-	if (distance > 5)
+	if (distance > effectiveRange/4)
 	{
 		return 5.0f;
 	}
@@ -112,4 +112,24 @@ Axe::Axe()
 {
 	effectiveRange = 20;
 	damageLevel = 3;
+}
+
+int RangedWeapon::getDamageRate(int distance) const
+{
+	if (distance <= getEffectiveRange()) {
+		return static_cast<int>(getPrecision(distance, getEffectiveRange()) * 10);
+	}
+	else {
+		return 0;
+	}
+}
+
+int MeleeWeapon::getDamageRate(int distance) const
+{
+	if (distance <= getEffectiveRange()) {
+		return static_cast<int>(getHit(distance, getEffectiveRange()) * 5);
+	}
+	else {
+		return 0;
+	}
 }

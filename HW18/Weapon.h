@@ -14,16 +14,16 @@ protected:
 class RangedWeapon : public Weapon
 {
 public:
-	virtual int getDamageRate(int distance) const override { return static_cast<int>(getPrecision(distance) * 10); }
+	virtual int getDamageRate(int distance) const override;
 
 protected:
-	virtual float getPrecision(int distance) const { return 1.0f; }
+	virtual float getPrecision(int distance, int effectiveRange) const { return 1.0f; }
 };
 
 class SniperRifle : public RangedWeapon
 {
 protected:
-	virtual float getPrecision(int distance) const override;
+	virtual float getPrecision(int distance, int effectiveRange) const override;
 public:
 	SniperRifle();
 };
@@ -31,7 +31,7 @@ public:
 class Pistol : public RangedWeapon
 {
 protected:
-	virtual float getPrecision(int distance) const override;
+	virtual float getPrecision(int distance, int effectiveRange) const override;
 public:
 	Pistol();
 };
@@ -39,7 +39,7 @@ public:
 class AssaultRifle : public RangedWeapon
 {
 protected:
-	virtual float getPrecision(int distance) const override;
+	virtual float getPrecision(int distance, int effectiveRange) const override;
 public:
 	AssaultRifle();
 };
@@ -47,18 +47,16 @@ public:
 class MeleeWeapon : public Weapon
 {
 public:
-	virtual int getDamageRate(int distance) const override
-	{
-		return static_cast<int>(getHit(distance) * 5);
-	}
+	virtual int getDamageRate(int distance) const override;
+	
 protected: 
-	virtual float getHit(int distance) const { return 1.0f; }
+	virtual float getHit(int distance, int effectiveRange) const { return 1.0f; }
 };
 
 class BareHand : public MeleeWeapon
 {
 protected:
-	virtual float getHit(int distance) const override;
+	virtual float getHit(int distance, int effectiveRange) const override;
 
 public:
 	BareHand();
@@ -67,7 +65,7 @@ public:
 class Axe : public MeleeWeapon
 {
 protected:
-	virtual float getHit(int distance) const override;
+	virtual float getHit(int distance, int effectiveRange) const override;
 public:
 	Axe();
 };
