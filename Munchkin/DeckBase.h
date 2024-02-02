@@ -65,8 +65,8 @@ public:
 
     void generate() override{}
     Item* generateItem();
-    std::vector<Item*> generateItems() const { return m_itemsDataBase; }//base code
-    //std::vector<Item*> generateItems();
+    std::vector<Item*> generateItems(); //const { return m_itemsDataBase; }//base code
+    //std::vector<Item*> generateItems(int numItems);
 private:
     std::vector<Item*> m_itemsDataBase;
     std::set<std::string> m_usedItemNames;

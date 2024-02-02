@@ -295,11 +295,28 @@ Item* ItemDeck::generateItem()
 	return  m_itemsDataBase[idx];*/
 }
 
-//std::vector<Item*> ItemDeck::generateItems() const  // base code
-//{
-//	//TODO: PICK AT RANDOM SEVERAL ITEMS FROM DATABASE AS A PLAYER HAND
-//	return m_itemsDataBase;
-//}
+std::vector<Item*> ItemDeck::generateItems()  // base code
+{
+	
+		std::vector<Item*> result;
+
+		if (!m_itemsDataBase.empty()) {
+			// Використовуємо випадковий генератор
+			std::random_device rd;
+			std::mt19937 gen(rd());
+			std::uniform_int_distribution<size_t> distribution(0, m_itemsDataBase.size() - 1);
+
+			// Випадковий індекс для вибору елемента
+			size_t randomIndex = distribution(gen);
+
+			// Додаємо випадковий елемент до результату
+			result.push_back(m_itemsDataBase[randomIndex]);
+		}
+
+		return result;
+	
+	//return m_itemsDataBase; // base code
+}
  
 //std::vector<Item*> ItemDeck::generateItems() 
 //{
