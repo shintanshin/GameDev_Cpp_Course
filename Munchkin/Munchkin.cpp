@@ -16,20 +16,27 @@ void Munchkin::updateLevelBy(int levels)
 
 }
 
-void Munchkin::addItem(Item* item)
-{
-    m_items.push_back(item);
-}
+//void Munchkin::addItem(Item* item)
+//{
+//    m_items.push_back(item);
+//}
 
-void Munchkin::setItems(const std::vector<Item*>& items)
-{
-    m_items = items;
-}
+//void Munchkin::setItems(const std::vector<Item*>& items) // it wirks
+//{
+//    m_items = items;
+//}
 
- std::vector<Item*>& Munchkin::getItems()
-{
-    return m_items;
-}
+//void Munchkin::setItems(const std::vector<Item*>& items)
+//{
+//    m_items.insert(m_items.end(), items.begin(), items.end());
+//}
+
+// std::vector<Item*>& Munchkin::getItems()
+//{
+//    return m_items;
+//}
+
+
 
 Modifier* Munchkin::popModifier(int idx)
 {

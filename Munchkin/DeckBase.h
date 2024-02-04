@@ -64,10 +64,18 @@ public:
     ~ItemDeck();
 
     void generate() override{}
-    Item* generateItem();
+    //std::vector<Item*> generateItem(size_t numberOfItems);
+
+    /*const std::vector<Item*>& getItemsDatabase() const {
+        return m_itemsDataBase;
+    }*/
+    //void generateItem(std::vector<Item*>& result);
+    Item* generateItem(); //base code
+    //std::vector<Item*> generateItem();
     std::vector<Item*> generateItems(); //const { return m_itemsDataBase; }//base code
-    //std::vector<Item*> generateItems(int numItems);
+  
 private:
+    int m_items;
     std::vector<Item*> m_itemsDataBase;
-    std::set<std::string> m_usedItemNames;
+    //std::set<std::string> m_usedItemNames;
 };

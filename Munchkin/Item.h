@@ -123,6 +123,6 @@ public:
 		return "\"" + getName() + "\"" + ", power:" + std::to_string(getBasePower()) + ", skills: Turns lvl of Gods into 10!\n";
 	}
 private:
-	int transformMonsterLevel(int level) const {return 10;}
+	int transformMonsterLevel(int level) const {return 5;}
 };
 //TODO: Add new Item type with unique properties

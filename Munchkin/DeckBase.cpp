@@ -22,30 +22,31 @@ DeckBase::~DeckBase()
 
 MonsterDeck::MonsterDeck()
 {
+	ItemDeck itemDeck;
     m_monstersDatabase =
     {
-		new Monster{"Grape Old Ones", 12, Tribe::Amorphous, new Runaway_ModifierFromHandRemoval {100}, new Victory_LvlUp {2}},
-		new Monster{"Ozathoth", 18, Tribe::Amorphous, new Runaway_LevelDowngradeIf {1, 4}, new Victory_LvlUp{2}},
-		new Monster{"Tht Whch Hs N Vwls", 18, Tribe::Amorphous, new Runaway_ModifierFromHandRemoval {2}, new Victory_GetModifier{2}},
-		new Monster{"Foggot", 6, Tribe::Amorphous, new Runaway_ModifierFromHandRemoval {1}, new Victory_GetModifier {2}},
+		//new Monster{"Grape Old Ones", 12, Tribe::Amorphous, new Runaway_ModifierFromHandRemoval {100}, new Victory_GetModifier {2}},
+		//new Monster{"Ozathoth", 18, Tribe::Amorphous, new Runaway_LevelDowngradeIf {1, 4}, new Victory_LvlUp{2}},
+		//new Monster{"Tht Whch Hs N Vwls", 18, Tribe::Amorphous, new Runaway_ModifierFromHandRemoval {2}, new Victory_LvlUp {2}},
+		//new Monster{"Foggot", 6, Tribe::Amorphous, new Runaway_ModifierFromHandRemoval {1}, new Victory_GetModifier {2}},
 
-		new Monster{"Shog Goth", 1, Tribe::Human, new Runaway_LevelDowngradeIf {1, 1}, new Victory_GetModifier {1}},
-		//new Monster{"Eldride Hawrer", 1, Tribe::Human, new Runaway_ItemEquipedRemoval {1}},
-		new Monster{"Tchoo-Tchoo People", 6, Tribe::Human, new Runaway_ItemEquipedRemoval {1}, new Victory_GetModifier {2}},
+		//new Monster{"Shog Goth", 1, Tribe::Human, new Runaway_LevelDowngradeIf {1, 1}, new Victory_GetModifier {1}},
+		new Monster{"Eldride Hawrer", 1, Tribe::Human, new Runaway_ItemEquipedRemoval {1}, new Victory_GetItem{1, &itemDeck}},
+		//new Monster{"Tchoo-Tchoo People", 6, Tribe::Human, new Runaway_ItemEquipedRemoval {1}, new Victory_GetModifier {2}},
 
-		new Monster{"Froggoth", 12, Tribe::Dark_Creature, new Runaway_LevelDowngradeIf {3, 1}, new Victory_LvlUp{2}},
-		//new Monster{"Nyuhees", 8, Tribe::Dark_Creature, new  Runaway_LevelDowngradeIf {2, 1}},
-		//new Monster{"Coggoth", 8, Tribe::Dark_Creature, new Runaway_ItemEquipedRemoval {1}},
-		//new Monster{"Nighty Gaunts", 14, Tribe::Dark_Creature, new Runaway_ModifierFromHandRemoval {3}},
+		//new Monster{"Froggoth", 12, Tribe::Dark_Creature, new Runaway_LevelDowngradeIf {3, 1}, new Victory_LvlUp{2}}
+		//new Monster{"Nyuhees", 8, Tribe::Dark_Creature, new  Runaway_LevelDowngradeIf {2, 1}, new Victory_GetModifier {2}},
+		//new Monster{"Coggoth", 8, Tribe::Dark_Creature, new Runaway_ItemEquipedRemoval {1}, new Victory_GetItem{1,&itemDeck}},
+		//new Monster{"Nighty Gaunts", 14, Tribe::Dark_Creature, new Runaway_ModifierFromHandRemoval {3}, new Victory_GetItem{1, & itemDeck}},
 
-		new Monster{"The King in Pink", 16, Tribe::Undead, new Runaway_LevelDowngradeIf {3, 3}, new Victory_LvlUp{2}},
-		new Monster{"The Unpronounceable Evil", 10, Tribe::Undead, new Runaway_LevelDowngradeIf {2, 1}, new Victory_GetModifier {2}},
-		new Monster{"Aughost Derwrinht", 2, Tribe::Undead, new Runaway_LevelDowngradeIf {1, 1}, new Victory_GetModifier {1}},
-		//new Monster{"Vampire", 3, Tribe::Undead, new Runaway_ModifierFromHandRemoval {1}},
+		//new Monster{"The King in Pink", 16, Tribe::Undead, new Runaway_LevelDowngradeIf {3, 3}, new Victory_LvlUp{2}},
+		//new Monster{"The Unpronounceable Evil", 10, Tribe::Undead, new Runaway_LevelDowngradeIf {2, 1}, new Victory_GetModifier {2}},
+		//new Monster{"Aughost Derwrinht", 2, Tribe::Undead, new Runaway_LevelDowngradeIf {1, 1}, new Victory_GetModifier {1}},
+		//new Monster{"Vampire", 3, Tribe::Undead, new Runaway_ModifierFromHandRemoval {1}, new Victory_GetItem{1, &itemDeck}},
 
-		//new Monster{"Shiva destructor", 20, Tribe::God, new Runaway_ModifierFromHandRemoval {3}},
-		new Monster{"Great Cthulhu", 20, Tribe::God, new Runaway_ItemEquipedRemoval {3}, new Victory_LvlUp{2}}
-		////new Monster{"Chibithulhu", 2, Tribe::God, new Runaway_ModifierFromHandRemoval {3}}
+		//new Monster{"Shiva destructor", 20, Tribe::God, new Runaway_ModifierFromHandRemoval {3}, new Victory_LvlUp{3}},
+		//new Monster{"Great Cthulhu", 20, Tribe::God, new Runaway_LevelDowngradeIf {3, 1}, new Victory_LvlUp{2}}
+		//new Monster{"Chibithulhu", 2, Tribe::God, new Runaway_ItemEquipedRemoval {1}, new Victory_GetItem{1,&itemDeck}}
     };
 }
 MonsterDeck::~MonsterDeck()
@@ -241,7 +242,16 @@ ItemDeck::ItemDeck()
 			}
 		}
 		file.close();
+		m_items = m_itemsDataBase.size(); // for debuging output 
 	}
+
+	std::cout << "Number of items loaded: " << m_itemsDataBase.size() << std::endl;
+
+	// Ініціалізація m_items (якщо це не було зроблено раніше)
+	// ...
+
+	// Додайте вивід для відладки
+	std::cout << "Number of items to generate: " << m_items << std::endl;
 
 	//TODO: Move item's database to file in format:
 	// type;name; additional if needed params for the type
@@ -260,11 +270,11 @@ ItemDeck::ItemDeck()
 
 ItemDeck::~ItemDeck()
 {
-	for (Item* item : m_itemsDataBase)
+	/*for (Item* item : m_itemsDataBase)
 	{
 		delete item;
 	}
-	m_itemsDataBase.clear();
+	m_itemsDataBase.clear();*/
 }
 
 Item* ItemDeck::generateItem() 
@@ -273,73 +283,103 @@ Item* ItemDeck::generateItem()
 		return nullptr;
 	}
 
-	int choice = std::rand() % m_itemsDataBase.size();
-	Item* selectedItem = m_itemsDataBase[choice];
+	std::random_device rd;
+	std::mt19937 gen(rd());
 
-	// Перевіряємо, чи монстр ще не розігрувався
-	while (m_usedItemNames.count(selectedItem->getName()) > 0) {
-		// Якщо монстр уже розігрувався, вибираємо новий випадковий монстр
-		choice = std::rand() % m_itemsDataBase.size();
-		selectedItem = m_itemsDataBase[choice];
+	// Випадковий індекс для вибору елемента
+	std::uniform_int_distribution<size_t> distribution(0, m_itemsDataBase.size() - 1);
+	size_t randomIndex = distribution(gen);
+
+	// Додаємо випадковий унікальний елемент до результату
+	if (randomIndex < m_itemsDataBase.size()) {
+		Item* generatedItem = m_itemsDataBase.at(randomIndex);
+		m_itemsDataBase.erase(m_itemsDataBase.begin() + randomIndex);
+		return generatedItem;
 	}
+	//Item* generatedItem = m_itemsDataBase[randomIndex];
 
-	// Додаємо ім'я розіграного монстра до контейнера використаних монстрів
-	m_usedItemNames.insert(selectedItem->getName());
+	//// Видаляємо вибраний елемент з бази даних
+	//m_itemsDataBase.erase(m_itemsDataBase.begin() + randomIndex);
 
-	// Видаляємо монстра з бази даних
-	m_itemsDataBase.erase(m_itemsDataBase.begin() + choice);
-
-	return selectedItem;
+	//return generatedItem;
 
 	/*unsigned int idx = std::rand() % m_itemsDataBase.size(); //base code
 	return  m_itemsDataBase[idx];*/
 }
 
-std::vector<Item*> ItemDeck::generateItems()  // base code
-{
-	
-		std::vector<Item*> result;
+//TEST
 
-		if (!m_itemsDataBase.empty()) {
-			// Використовуємо випадковий генератор
-			std::random_device rd;
-			std::mt19937 gen(rd());
-			std::uniform_int_distribution<size_t> distribution(0, m_itemsDataBase.size() - 1);
-
-			// Випадковий індекс для вибору елемента
-			size_t randomIndex = distribution(gen);
-
-			// Додаємо випадковий елемент до результату
-			result.push_back(m_itemsDataBase[randomIndex]);
-		}
-
-		return result;
-	
-	//return m_itemsDataBase; // base code
-}
- 
-//std::vector<Item*> ItemDeck::generateItems() 
+//std::vector<Item*> ItemDeck::generateItem() //це чудово і правильно працює!!!
 //{
-//	if (m_itemsDataBase.empty()) {
-//		return nullptr;
-//	}
-//
-//	int choice = std::rand() % m_itemsDataBase.size();
-//	Item* selectedItem = m_itemsDataBase[choice];
-//
-//	// Перевіряємо, чи монстр ще не розігрувався
-//	while (m_usedItemNames.count(selectedItem->getName()) > 0) {
-//		// Якщо монстр уже розігрувався, вибираємо новий випадковий монстр
-//		choice = std::rand() % m_itemsDataBase.size();
-//		selectedItem = m_itemsDataBase[choice];
-//	}
-//
-//	// Додаємо ім'я розіграного монстра до контейнера використаних монстрів
-//	m_usedItemNames.insert(selectedItem->getName());
-//
-//	// Видаляємо монстра з бази даних
-//	m_itemsDataBase.erase(m_itemsDataBase.begin() + choice);
-//
-//	return selectedItem;
-//
+//	std::vector<Item*> result;
+//	
+//			if (!m_itemsDataBase.empty()) {
+//				// Використовуємо випадковий генератор
+//				std::random_device rd;
+//				std::mt19937 gen(rd());
+//				std::uniform_int_distribution<size_t> distribution(0, m_itemsDataBase.size() - 1);
+//	
+//				// Випадковий індекс для вибору елемента
+//				size_t randomIndex = distribution(gen);
+//	
+//				// Додаємо випадковий елемент до результату
+//				result.push_back(m_itemsDataBase[randomIndex]);
+//			}
+//	
+//			return result;
 //}
+
+std::vector<Item*> ItemDeck::generateItems()
+{
+	std::vector<Item*> result;
+
+	// Вивести кількість елементів у базі даних і кількість елементів для генерації
+	std::cout << "Number of items in the database: " << m_itemsDataBase.size() << std::endl;
+	std::cout << "Number of items to generate: " << m_items << std::endl;
+
+	if (!m_itemsDataBase.empty()) {
+		Item* generatedItem = generateItem();
+
+		if (generatedItem) {
+			result.push_back(generatedItem);  // Додаємо елемент у вектор
+
+			// Вивід для відладки
+			std::cout << "Generated Item: " << generatedItem->getName() << std::endl;
+		}
+		else {
+			std::cout << "Failed to generate item!" << std::endl; // Додайте вивід для відладки
+		}
+	}
+
+
+	//// Генеруємо елементи, поки база даних не порожній або не досягнуто кількість m_items
+	//for (size_t i = 0; i < m_items && !m_itemsDataBase.empty(); ++i) {
+	//	// Викликаємо generateItem() і додаємо його результат безпосередньо до вектора
+	//	Item* generatedItem = generateItem();
+	//	//std::vector<Item*> generatedItems = generateItem();
+	//	//Item* generatedItem = generateItem(1).front(); // Беремо перший (і, в даному випадку, єдиний) елемент
+	//	if (generatedItem) {
+	//	//if (!generatedItems.empty() && generatedItems[0]) {
+	//		result.push_back(generatedItem);
+	//		//result.push_back(generatedItems[0]);
+
+	//		// Знаходимо індекс вибраного елемента
+	//		auto it = std::find(m_itemsDataBase.begin(), m_itemsDataBase.end(), generatedItem);
+	//		// Видаляємо вибраний елемент з бази даних
+	//		if (it != m_itemsDataBase.end()) {
+	//			m_itemsDataBase.erase(it);
+	//		}
+	//		/*m_itemsDataBase.erase(
+	//			std::remove(m_itemsDataBase.begin(), m_itemsDataBase.end(), generatedItems[0]),
+	//			m_itemsDataBase.end()
+	//		);*/
+	//	}
+	//	else {
+	//		std::cout << "Generated Item is nullptr!" << std::endl; // Додайте вивід для відладки
+	//	};
+	//}
+
+	std::cout << "Number of items generated: " << result.size() << std::endl; // Додайте вивід для відладки
+
+	return result;
+}

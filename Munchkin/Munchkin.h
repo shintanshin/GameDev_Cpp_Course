@@ -3,10 +3,12 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include "DeckBase.h"
 
 class Item;
 class Modifier;
 class ModifierDeck;
+class ItemDeck;
 
 using uint = unsigned int;
 
@@ -14,7 +16,7 @@ class Munchkin
 {
 public:
 	Munchkin() = default;
-	Munchkin(const std::string& name) : m_name(name) {}
+	Munchkin(const std::string& name/*, ItemDeck* itemDeck*/) : m_name(name) /* m_itemDeck(itemDeck)*/{}
 
 	void setName(const std::string& name) { m_name = name; }
 	const std::string& getName() const { return m_name; }
@@ -22,9 +24,19 @@ public:
 	int getLevel() const { return m_level; }
 	void updateLevelBy(int levels);
 
-	void addItem(Item* item);
-	void setItems(const std::vector<Item*>& items); //base code
-	std::vector<Item*>& getItems();
+	void addItem(Item* item) {m_items.push_back(item);} // base code
+	/*std::vector<Item*>& addItem(Item* item) {
+		m_items.push_back(item);
+		return m_items;
+	}*/
+
+	void setItems(const std::vector<Item*>& items) //base code
+	{
+		m_items = items;/*m_items.insert(m_items.end(), items.begin(), items.end());*/
+	}
+
+	std::vector<Item*>& getItems(){ return m_items; } //base code
+	
 
 	void removeModifierFromHand() {}
 	void removeItemEquipped() {}
