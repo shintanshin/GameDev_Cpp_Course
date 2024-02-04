@@ -6,13 +6,12 @@
 class Item;
 class Modifier;
 class Monster;
-class Victory_GetModifier;
 
 class DeckBase
 {
 public:
-    DeckBase();
-    ~DeckBase();
+    DeckBase(){}
+    ~DeckBase(){}
 
     virtual void generate() = 0;
 
@@ -41,20 +40,18 @@ class ModifierDeck : public DeckBase
 public:
     ModifierDeck();
     ~ModifierDeck();
+
+    static ModifierDeck& getInstance() { static ModifierDeck instance; return instance; }
        
     void generate() override {}
-    //Modifier* generateModifier()const;//base code
 
-    //std::vector<Modifier*> generateModifier();
-    std::vector<Modifier*> generateModifiers() const{ return m_modifiersDatabase; };
+    Modifier* generateModifier();
+    std::vector<Modifier*> generateModifiers();
     
-   /* size_t getModifiersDatabaseSize() const {
-        return m_modifiersDatabase.size();
-    }*/
-
+ 
 private:
-
-    std::vector<Modifier*> m_modifiersDatabase;
+    int m_modifiers;
+    std::vector<Modifier*> m_modifiersDataBase;
 };
 
 class ItemDeck : public DeckBase
@@ -63,19 +60,14 @@ public:
     ItemDeck();
     ~ItemDeck();
 
-    void generate() override{}
-    //std::vector<Item*> generateItem(size_t numberOfItems);
+    static ItemDeck& getInstance() { static ItemDeck instance; return instance; }
 
-    /*const std::vector<Item*>& getItemsDatabase() const {
-        return m_itemsDataBase;
-    }*/
-    //void generateItem(std::vector<Item*>& result);
-    Item* generateItem(); //base code
-    //std::vector<Item*> generateItem();
-    std::vector<Item*> generateItems(); //const { return m_itemsDataBase; }//base code
+    void generate() override{}
+    
+    Item* generateItem(); 
+    std::vector<Item*> generateItems(); 
   
 private:
     int m_items;
     std::vector<Item*> m_itemsDataBase;
-    //std::set<std::string> m_usedItemNames;
 };

@@ -1,8 +1,5 @@
 #pragma once
 #include "Munchkin.h"
-#include "ItemDeck.h"
-//#include "MonsterDeck.h"
-#include "ModifierDeck.h"
 #include "DeckBase.h"
 
 class Game
@@ -12,7 +9,6 @@ public:
 	void run();
 
 private:
-	//void generateMunchkinInitialCards(); // base code 
 	void generateMunchkinInitialCards();
 	Monster* generateMonster();
 

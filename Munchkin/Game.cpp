@@ -7,7 +7,6 @@
 
 #include "Fight.h"
 #include "Item.h"
-#include "ItemDeck.h"
 #include "Modifier.h"
 #include "Monster.h"
 #include "Runaway.h"
@@ -206,11 +205,6 @@ void Game::run()
 
 		fight.start();
 
-		//State pattern may be a good candidate here
-		//Every case may be its own state with transition rules, e.g.
-		//Start->InProgress->Win/Runaway/ApplyModifiers, Runaway->Lost, ApplyModifiers->InProgress
-		//https://refactoring.guru/uk/design-patterns/state
-
 		//Fight loop
 		while (!fight.getFinish())
 		{
@@ -250,18 +244,10 @@ void Game::run()
 	}
 }
 
-//void Game::generateMunchkinInitialCards() //base code
-//{
-//
-//	m_munchkin.setItems(m_itemsDeck.generateItems());
-//
-//	m_munchkin.addModifiers(m_modifiersDeck.generateModifiers()); // base code
-//	//m_munchkin.addModifiers(m_modifiersDeck.generateModifiers());
-//}
 void Game::generateMunchkinInitialCards()
 {
 	m_munchkin.setItems(m_itemsDeck.generateItems());
-	m_munchkin.addModifiers(m_modifiersDeck.generateModifiers()); 
+	m_munchkin.setModifiers(m_modifiersDeck.generateModifiers()); 
 }
 
 Monster* Game::generateMonster()

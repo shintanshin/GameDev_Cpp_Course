@@ -2,4 +2,4 @@ Weapon;"The Sword of DOOM";5
 UndeadWeapon;"Stinky knife";2
 UndeadWeapon;"Holy grenade";4
 AmorphousWeapon;"Railroad Spike";3
-GodWeapon;"List of Humiliation";1
+GodWeapon;"List of Humiliation";5

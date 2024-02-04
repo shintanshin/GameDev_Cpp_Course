@@ -3,8 +3,6 @@
 #include <string>
 #include "Monster.h"
 
-//class Monster;
-
 class Item
 {
 public:
@@ -18,7 +16,6 @@ public:
 
 protected:
 	std::string m_name;
-	//other fields like description, image, category
 
 private:
 };
@@ -123,6 +120,5 @@ public:
 		return "\"" + getName() + "\"" + ", power:" + std::to_string(getBasePower()) + ", skills: Turns lvl of Gods into 10!\n";
 	}
 private:
-	int transformMonsterLevel(int level) const {return 5;}
+	int transformMonsterLevel(int level) const {return 10;}
 };
-//TODO: Add new Item type with unique properties

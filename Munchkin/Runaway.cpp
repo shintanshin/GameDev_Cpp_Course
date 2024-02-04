@@ -19,7 +19,7 @@ void Runaway_LevelDowngradeIf::apply(Munchkin* munchkin)
 }
 
 
-void Runaway_ModifierFromHandRemoval::apply(Munchkin* munchkin)  //it works!!!
+void Runaway_ModifierFromHandRemoval::apply(Munchkin* munchkin)  
 {
     std::vector<Modifier*>& modifiers = munchkin->getModifiers();
 
@@ -37,33 +37,6 @@ void Runaway_ModifierFromHandRemoval::apply(Munchkin* munchkin)  //it works!!!
         modifiers.clear();
     }
 }
-
-//void Runaway_ModifierFromHandRemoval::apply(Munchkin* munchkin)
-//{
-//    std::vector<Modifier*>& modifiers = munchkin->getModifiers();
-//
-//    // Ensure there are enough cards to lose
-//    if (modifiers.size() >= m_ModifierToDowngrade)
-//    {
-//        // Seed the random number generator
-//        std::srand(static_cast<unsigned int>(std::time(0)));
-//
-//        // Shuffle the hand to get random cards
-//        std::random_shuffle(modifiers.begin(), modifiers.end());
-//
-//        // Ensure that m_ModifierToDowngrade is not greater than the size of modifiers
-//        m_ModifierToDowngrade = std::min(m_ModifierToDowngrade, static_cast<int>(modifiers.size()));
-//
-//        // Remove the first m_ModifierToDowngrade cards from the shuffled hand
-//        modifiers.erase(modifiers.begin(), modifiers.begin() + m_ModifierToDowngrade);
-//    }
-//    // If there are fewer than m_ModifierToDowngrade cards, remove all cards
-//    else
-//    {
-//        modifiers.clear();
-//    }
-//}
-
 
 void Runaway_ItemEquipedRemoval::apply(Munchkin* munchkin)
 {

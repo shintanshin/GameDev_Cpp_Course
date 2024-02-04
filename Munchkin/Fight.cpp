@@ -1,5 +1,4 @@
 #include "Fight.h"
-
 #include "Item.h"
 #include "Modifier.h"
 #include "Munchkin.h"

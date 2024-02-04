@@ -1,6 +1,5 @@
 #pragma once
-//Only pointer is used here so no need for headers include
-//forward declaration is sufficient enough
+
 class Munchkin;
 class Monster;
 class DeckBase;

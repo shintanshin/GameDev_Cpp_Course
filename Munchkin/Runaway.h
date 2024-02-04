@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 
-//forwad declaration
 class Munchkin;
 
 class Runaway
@@ -9,9 +8,7 @@ class Runaway
 public:
 	virtual void apply(Munchkin* munchkin) = 0;
 
-	//#TODO: Implement in all children classes, see class Item for reference
 	virtual std::string getFullInfo() { return ""; }
-	//virtual std::string getFullInfo() const = 0;
 };
 
 class Runaway_LevelDowngrade : public Runaway
@@ -37,7 +34,6 @@ private:
 	int m_minimalMunchkinLevelToApply;
 };
 
-//Remove a card from hand(modifier) at random
 class Runaway_ModifierFromHandRemoval : public Runaway
 {
 public:
@@ -49,7 +45,6 @@ private:
 	int  m_ModifierToDowngrade;
 };
 
-//Remove equiped item from Outfit with biggest base power
 class Runaway_ItemEquipedRemoval : public Runaway
 {
 public:
